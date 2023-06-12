@@ -10,3 +10,9 @@ print(sorted(cars))
 
 print("\nHere is the original list again:")
 print(cars)
+
+cars.reverse()
+print(cars)
+
+cars.reverse()
+print(cars)
