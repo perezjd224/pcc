@@ -20,6 +20,10 @@ guest_list.append('tal')
 for name in guest_list:
     print(name.title() + " has been invited to dinner.\n")
 
+# 3-9 Dinner Guest
+print(str(len(guest_list)) + " people have been invited to dinner.\n")
+
+
 # 3-7 Shrinking Guest List
 print("There is only space for two guest.\n")
 print(guest_list.pop(6).title()+ "'s inviation has been cancelled.\n")
@@ -32,3 +36,4 @@ for name in guest_list:
 del guest_list[0]
 del guest_list[0]
 print(guest_list)
+
