@@ -8,3 +8,4 @@ pieces = ['pawn',
 
 print(sorted(pieces))
 
+print(len(pieces))
