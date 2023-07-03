@@ -1,4 +1,4 @@
-# /* Square.py
+# /* square.py
 import pygame
 
 
