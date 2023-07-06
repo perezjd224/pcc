@@ -47,3 +47,49 @@ class Board:
 
     def get_piece_from_pos(self, pos):
         return self.get_square_from_pos(pos).occupying_piece
+    
+    def setup_board(self):
+       for y, row in enumerate(self.config):
+           for x, piece in enumerate(row):
+               if piece != '':
+                   square = self.get_square_from_pos((x, y))
+                   # looking inside contents, what piece does it have
+                   if piece[1] == 'R':
+                       square.occupying_piece = Rook(
+                           (x, y), 'white' if piece[0] == 'w' else 'black', self
+                       )
+                   # as you notice above, we put `self` as argument, or means our class Board
+                   elif piece[1] == 'N':
+                       square.occupying_piece = Knight(
+                           (x, y), 'white' if piece[0] == 'w' else 'black', self
+                       )
+                   elif piece[1] == 'B':
+                       square.occupying_piece = Bishop(
+                           (x, y), 'white' if piece[0] == 'w' else 'black', self
+                       )
+                   elif piece[1] == 'Q':
+                       square.occupying_piece = Queen(
+                           (x, y), 'white' if piece[0] == 'w' else 'black', self
+                       )
+                   elif piece[1] == 'K':
+                       square.occupying_piece = King(
+                           (x, y), 'white' if piece[0] == 'w' else 'black', self
+                       )
+                   elif piece[1] == 'P':
+                       square.occupying_piece = Pawn(
+                           (x, y), 'white' if piece[0] == 'w' else 'black', self
+                       )
+
+    def handle_click(self, mx, my):
+        x = mx // self.tile_width
+        y = my // self.tile_height
+        clicked_square = self.get_square_from_pos((x, y))
+        if self.selected_piece is None:
+            if clicked_square.occupying_piece is not None:
+                if clicked_square.occupying_piece.color == self.turn:
+                    self.selected_piece = clicked_square.occupying_piece
+        elif self.selected_piece.move(self, clicked_square):
+            self.turn = 'white' if self.turn == 'black' else 'black'
+        elif clicked_square.occupying_piece is not None:
+            if clicked_square.occupying_piece.color == self.turn:
+                self.selected_piece = clicked_square.occupying_piece
