@@ -17,3 +17,12 @@ print("\nMiddle two items of the list are:")
 print(my_foods[1:3])
 print("\nLast three items of the list are:")
 print(my_foods[1:])
+
+# TRY IT YOURSELF 4-12
+for food in my_foods:
+    print("My favorite foods are:")
+    print(food)
+
+for food in friends_foods:
+    print("Myfriend's favorite food's are:")
+    print(food)
